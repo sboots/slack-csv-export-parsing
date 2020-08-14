@@ -46,4 +46,5 @@ The most reliable way of converting the generated pages to Word format seems to 
 
 3. Use a local tool (e.g. Automator script) to rescale the images in the local folder down to a manageable size (e.g. max 300 pixels), since Word doesn't remember CSS-based image width and height values.
 
-4. Open the saved "Webpage, Complete" option **in Microsoft Word**. Save the document as a "Word Document (.docx)" or as a PDF document (choose the "Best for printing" option to avoid images not displaying in the generated version).
+4. Open the saved "Webpage, Complete" option **in Microsoft Word**. Save the document as a PDF document (choose the "Best for printing" option to avoid images not displaying in the generated version). 
+    * If saved as a "Word Document (.docx)", note that by default images are saved by external link rather than embedding, and so won't be displayed on other computers. [The steps here to embed linked images](https://superuser.com/questions/294978/transform-linked-images-to-embedded-images) can be used with smaller documents.
