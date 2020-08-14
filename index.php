@@ -1,31 +1,15 @@
 <?php
 
-// Thanks to
-// https://github.com/salesforce/handlebars-php#getting-started
-
 # With composer we can autoload the Handlebars package
 require_once ("./vendor/autoload.php");
 
-# If not using composer, you can still load it manually.
-# require 'src/Handlebars/Autoloader.php';
-# Handlebars\Autoloader::register();
-
-use Handlebars\Handlebars;
-use Handlebars\Loader\FilesystemLoader;
-
-# Set the partials files
-$partialsDir = __DIR__."/templates";
-$partialsLoader = new FilesystemLoader($partialsDir,
-    [
-        "extension" => "html"
-    ]
-);
-
-# We'll use $handlebars throughout this the examples, assuming the will be all set this way
-$handlebars = new Handlebars([
-    "loader" => $partialsLoader,
-    "partials_loader" => $partialsLoader
+$loader = new \Twig\Loader\FilesystemLoader(__DIR__."/templates");
+$twig = new \Twig\Environment($loader, [
+    'cache' => __DIR__."/template_cache",
+    'debug' => true,
 ]);
+
+$twig->addExtension(new \Twig\Extension\DebugExtension());
 
 
 // Source for the CSV file
@@ -72,7 +56,12 @@ if (file_exists($filepath)) {
 
 foreach($nestedArray as $conversation => $data) {
 
-    $htmlOutput = $handlebars->render("channel", ['conversation' => $conversation, 'data' => $data]);
+    // $htmlOutput = $handlebars->render("channel", ['conversation' => $conversation, 'data' => $data]);
+
+    $htmlOutput = $twig->render('page.html', ['conversation' => $conversation, 'data' => $data]);
+
+
+
 
     file_put_contents("output/$conversation.html", $htmlOutput);
     exit();

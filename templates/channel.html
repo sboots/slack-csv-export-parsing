@@ -1,31 +1,28 @@
 <h1>{{conversation}}</h1>
 
-{{#each data}}
-    <h2>{{@key}}</h2>
+{% for key, dayData in data %}
+    <h2 id="{{ key }}">{{ key|date("F d, Y") }}</h2>
     <ol>
-    {{#each this}}
+{% for ts,thread in dayData %}
+{% set openThread = 0 %}
+{% for item in thread %}
+{% if item.is_thread_start %}
+{% set openThread = 1 %}
+    <li id="ts-{{ ts }}">
+    {{~ include('message.html') ~}}
+    <ol>
+{% else %}
     <li>
-        {{@key}}
-    
-        {{#if this.0.is_thread_start}}
-            <ol>
-                {{#each this}}
-                    <li>
-                        <b>{{this.real_name}} {{this.datetime}}</b><br/>
-                        {{this.text}}
-                    </li>
-                {{/each}}
-            </ol>
-        {{else}}
-            {{! In this case, [this] will be an array with only 1 entry, since it's not a thread start }}
-            {{#each this}}
-                <b>{{this.real_name}} {{this.datetime}}</b><br/>
-                {{this.text}}
-            {{/each}}
-        {{/if}}
-        
+    {{~ include('message.html') ~}}
     </li>
-    {{/each}}
+{% endif %}
+
+{% endfor %}
+{% if openThread %}
+    </ol>
+    </li>
+{% endif %}
+{% endfor %}
     </ol>
 
-{{/each}}
+{% endfor %}
