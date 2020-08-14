@@ -1,4 +1,4 @@
 composer.lock
 vendor/
-output/
-template_cache/
+output/*.html
+template_cache/*/*.php
