@@ -158,10 +158,8 @@ foreach($nestedArray as $conversation => $data) {
 
 
     file_put_contents("output/$conversation.html", $htmlOutput);
-    exit();
-
-    // foreach($data as $date => $items) {
-    //     var_dump($items[0]);
-    //     exit();
-    // }
+    
+    echo "Exported output/$conversation.html\n";
 }
+
+echo "Finished exporting all channels.\n\n";
