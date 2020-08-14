@@ -90,7 +90,7 @@ function csvstring_to_array($string, $separatorChar = ',', $enclosureChar = '"',
 
 
 // Source for the CSV file
-$filepath = "../slack-analysis/data/out/en-messages.csv";
+$filepath = "../slack-analysis/data/out/en-msgs.csv";
 
 
 if (file_exists($filepath)) {
