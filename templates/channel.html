@@ -1,0 +1,31 @@
+<h1>{{conversation}}</h1>
+
+{{#each data}}
+    <h2>{{@key}}</h2>
+    <ol>
+    {{#each this}}
+    <li>
+        {{@key}}
+    
+        {{#if this.0.is_thread_start}}
+            <ol>
+                {{#each this}}
+                    <li>
+                        <b>{{this.real_name}} {{this.datetime}}</b><br/>
+                        {{this.text}}
+                    </li>
+                {{/each}}
+            </ol>
+        {{else}}
+            {{! In this case, [this] will be an array with only 1 entry, since it's not a thread start }}
+            {{#each this}}
+                <b>{{this.real_name}} {{this.datetime}}</b><br/>
+                {{this.text}}
+            {{/each}}
+        {{/if}}
+        
+    </li>
+    {{/each}}
+    </ol>
+
+{{/each}}

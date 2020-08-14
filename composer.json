@@ -1,0 +1,7 @@
+{
+    "name": "sboots/slack-parsing",
+    "description": "A tool for parsing CSV exports of Slack archives",
+    "require": {
+        "salesforce/handlebars-php": "2.*"
+    }
+}
