@@ -1,11 +1,22 @@
 <h1>{{conversation}}</h1>
 
-{% for key, dayData in data %}
-    <h2 id="{{ key }}">{{ key|date("F d, Y") }}</h2>
-    <ol>
-{% for ts,thread in dayData %}
+{% set currentDay = '' %}
+
+{% for ts,thread in data %}
 {% set openThread = 0 %}
 {% for item in thread %}
+
+{% if item.date != currentDay and item.is_thread_reply == 0 %}
+
+{% if currentDay != '' %}
+</ol>
+{% endif %}
+
+<h2 id="{{ item.date }}">{{ item.date|date("F d, Y") }}</h2>
+<ol>
+{% set currentDay = item.date %}
+{% endif %}
+
 {% if item.is_thread_start %}
 {% set openThread = 1 %}
     <li id="ts-{{ ts }}">
@@ -23,6 +34,5 @@
     </li>
 {% endif %}
 {% endfor %}
-    </ol>
 
-{% endfor %}
+</ol>
