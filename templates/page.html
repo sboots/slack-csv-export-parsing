@@ -27,7 +27,6 @@
             img {
                 max-width: 400px;
                 max-height: 300px;
-                height: 100px;
             }
         </style>
         <script>
@@ -35,7 +34,7 @@
 // https://stackoverflow.com/a/22051972
 document.addEventListener("DOMContentLoaded", function(event) {
    document.querySelectorAll('img').forEach(function(img){
-  	img.onerror = function(){this.style.display='none';};
+  	img.onerror = function(){this.parentNode.removeChild(this);};
    })
 });
         </script>
