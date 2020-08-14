@@ -1,6 +1,8 @@
 # Slack export parsing/rendering helper script
 
-This PHP script generates HTML pages for Slack exports converted to CSV format. It uses the [Twig template library](https://twig.symfony.com/).
+This PHP script generates HTML pages for Slack exports [converted to CSV format](https://github.com/lchski/slack-analysis). It uses the [Twig template library](https://twig.symfony.com/).
+
+The CSV input files parsed by this script are generated from [Slack admin channel exports](https://slack.com/intl/en-ca/help/articles/204897248-Guide-to-Slack-import-and-export-tools) converted to CSV by [lchski](https://github.com/lchski)'s [slack-analysis](https://github.com/lchski/slack-analysis) tool.
 
 ## Installing / first-run
 
