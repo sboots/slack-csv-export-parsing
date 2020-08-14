@@ -1,6 +1,6 @@
 <?php
 
-# With composer we can autoload the Handlebars package
+# With composer we can autoload the Twig package
 require_once ("./vendor/autoload.php");
 
 require_once("helpers.php");
@@ -35,7 +35,7 @@ if (file_exists($filepath)) {
 
             $item['date'] = substr($item['datetime'],0,10);
 
-            // Handlebars compatible booleans
+            // Handlebars/Twig compatible booleans
             if($item['is_thread_start'] == "TRUE") {
                 $item['is_thread_start'] = 1;
             }
