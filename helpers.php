@@ -22,13 +22,13 @@ function csvstring_to_array($string, $separatorChar = ',', $enclosureChar = '"',
     $isEnclosured = false;
     for($i=0; $i<$size;$i++) {
 
-        $char = $string{$i};
+        $char = $string[$i];
         $addChar = "";
 
         if($isEnclosured) {
             if($char==$enclosureChar) {
 
-                if($i+1<$size && $string{$i+1}==$enclosureChar){
+                if($i+1<$size && $string[$i+1]==$enclosureChar){
                     // escaped char
                     $addChar=$char;
                     $i++; // dont check next char
